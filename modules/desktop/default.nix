@@ -2,8 +2,8 @@
 
 {
   imports = [
-    audio.nix
-    power.nix
-    desktop.nix
+    ./audio.nix
+    ./power.nix
+    ./desktop.nix
   ];
 }
