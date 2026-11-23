@@ -5,7 +5,7 @@
     [ 
       ../vm.nix
       ./hardware-configuration.nix
-      ../../modules/default
+      ../../modules/core
       ../../modules/desktop
     ];
 
