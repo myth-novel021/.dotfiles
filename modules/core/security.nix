@@ -21,7 +21,7 @@
     };
   };
 
-  boot.kernelParams = {
+  boot.kernelParams = [
     "audit=1"
   ];
 

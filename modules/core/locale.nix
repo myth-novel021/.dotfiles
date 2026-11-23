@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   time.timeZone = "Asia/Tokyo";
@@ -30,7 +30,7 @@
       udev-gothic-nf
     ];
 
-    fontDir.enable = true
+    fontDir.enable = true;
     fontconfig = {
       defaultFonts = {
         serif = [ "Noto Serif CJK JP" "Noto Color Emoji"];
