@@ -3,6 +3,6 @@
 {
   imports = [
     ./components
-    ./default.nix
+    ./base.nix
   ];
 }
