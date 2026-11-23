@@ -28,13 +28,15 @@
     home-manager, 
     disko, 
     noctalia, 
+    nixvim,
     ...
   }: 
 
   let
 
     hosts = [
-      caerula
+      "caerula"
+      "oblivio"
     ];
 
     system = "x86_64-linux";
@@ -47,11 +49,8 @@
       modules = [
         disko.nixosModules.disko
         home-manager.nixosModules.default
-        ./modules/nix.nix
-        ./modules/boot.nix
-        ./modules/security.nix
-        ./modules/networking.nix
-        ./disko/default.nix
+
+        ./host/${hostname}/configuration.nix
 
         inputs.nixvim.homeModules.nixvim
 
