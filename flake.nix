@@ -50,7 +50,7 @@
         disko.nixosModules.disko
         home-manager.nixosModules.default
 
-        ./host/${hostname}/configuration.nix
+        ./hosts/${hostname}/configuration.nix
 
         inputs.nixvim.homeModules.nixvim
 
