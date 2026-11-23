@@ -11,7 +11,7 @@
       partitions = {
 
         ESP = {
-          size = "1G";
+          end = "1G";
           type = "EF00";
           priority = 1;
           
@@ -28,8 +28,7 @@
           priority = 2;
 
           content = {
-            type = "filesystem";
-            format = "btrfs";
+            type = "btrfs";
 
             extraArgs = [ "-f" ];
 
