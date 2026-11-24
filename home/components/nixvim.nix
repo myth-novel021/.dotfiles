@@ -1,8 +1,11 @@
-{ pkgs, nixvim, ... }:
+{ pkgs, inputs, ... }:
 
 {
+  imports = [inputs.nixvim.homeManagerModules.nixvim ];
+
   programs.nixvim = {
     enable = true;
+    package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
 
     vimAlias = true;
     viAlias = true;
@@ -13,7 +16,7 @@
 
     clipboard.providers.xclip.enable = true;
 
-    colorschmes.catppuccin = {
+    colorschemes.catppuccin = {
       enable = true;
       package = pkgs.vimPlugins.catppuccin-nvim;
       settings.flavour = "macchiato";

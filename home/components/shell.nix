@@ -5,7 +5,7 @@
 
     enable = true;
     enableCompletion = true;
-    autosuggestions.enable = true;
+    autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
 
     shellAliases = {
@@ -82,7 +82,7 @@
 
   programs.bat = {
     enable = true;
-    extraPackages = with pkgs.bat-extras [
+    extraPackages = with pkgs.bat-extras; [
       batdiff
       batgrep
       batwatch

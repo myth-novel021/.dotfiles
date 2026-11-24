@@ -52,7 +52,6 @@
 
         ./hosts/${hostname}/configuration.nix
 
-        # inputs.nixvim.homeModules.nixvim
 
         { networking.hostName = hostname; }
 

@@ -2,7 +2,7 @@
 
 {
   home = {
-    hostname = hostname;
+    username = hostname;
     homeDirectory = "/home/${hostname}";
 
     stateVersion = "26.05";
