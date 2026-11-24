@@ -2,7 +2,7 @@
 
 {
   networking = {
-    networkimanager.enable = true;
+    networkmanager.enable = true;
 
     useDHCP = false;
 

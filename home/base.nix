@@ -1,12 +1,8 @@
 { pkgs, hostname, ... }:
 
 {
-  imports = [
-    ./${hostname}.nix
-  ];
-
   home = {
-    hostname = ${hostname};
+    hostname = hostname;
     homeDirectory = "/home/${hostname}";
 
     stateVersion = "26.05";

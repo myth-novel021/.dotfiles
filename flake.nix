@@ -52,7 +52,7 @@
 
         ./hosts/${hostname}/configuration.nix
 
-        inputs.nixvim.homeModules.nixvim
+        # inputs.nixvim.homeModules.nixvim
 
         { networking.hostName = hostname; }
 
@@ -62,7 +62,7 @@
             useUserPackages = true;
             extraSpecialArgs = { inherit inputs hostname; };
             
-            user.${hostname} = import ./home/${hostname};
+            users.${hostname} = import ./home/${hostname}.nix;
           };
         }
       ];
