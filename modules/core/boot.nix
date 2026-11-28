@@ -13,8 +13,6 @@
       timeout = 3;
     };
 
-    initrd.systemd.enable = true;
-
     supportedFilesystems = [
       "btrfs"
     ];

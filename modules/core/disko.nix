@@ -3,7 +3,6 @@
 {
   disko.devices.disk.main = {
     type = "disk";
-    device = "/dev/vda";
     
     content = {
       type = "gpt";
@@ -63,6 +62,7 @@
 
           content = {
             type = "swap";
+            resumeDevice = true;
           };
         };
       };

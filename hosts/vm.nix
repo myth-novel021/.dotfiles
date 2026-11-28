@@ -1,6 +1,12 @@
 { ... }:
 
 {
+  imports = [
+    ./modules/core
+    ./modules/desktop
+    ./modules/laptop
+  ];
+
   services.qemuGuest.enable = true;
 
   services.spice-vdagentd.enable = true;
@@ -13,6 +19,4 @@
     "virtio_scsi"
     "virtio_net"
   ];
-
-  system.stateVersion = "26.05";
 }

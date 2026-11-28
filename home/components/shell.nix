@@ -25,10 +25,9 @@
   };
 
   home.packages = with pkgs; [
-    git
     duf
     dust
-    tlrc
+    tealdeer
   ];
 
   programs.yazi = {

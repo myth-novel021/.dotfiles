@@ -39,7 +39,7 @@
     bottom
     duf
     dust
-    tlrc
+    tealdeer
     yazi
     pciutils
     usbutils

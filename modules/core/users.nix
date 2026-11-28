@@ -1,24 +1,40 @@
-{ pkgs, hostname, ... }:
+{ lib, host, inputs, ... }:
 
 {
-  users.mutableUsers = true;
+  let
+    hosts = import ../../hosts/host-config.nix;
 
-  users.users.${hostname} = {
+    mkUserConf = username:
+      let
+        user = hosts.${username};
+      in
+        
+        users.users.${user.name} = {
+          inherit (user) isNormalUser extraGroups;
+        };
+        
+        home-manager = {
 
-    isNormalUser = true;
+          extraSpecialArgs = { inherit inputs host user; };
+          imports = [
+            ../../home/home.nix
+          ];
+        };
+          
+  in {
+    users.mutableUsers = true;
+    security.sudo = {
+      enable = true;
+      wheelNeedsPassword = true;
+    };
+    
+    home-manager = {
+      useGlobalPkgs = true;
+      useUserPackages = true;
+    };
 
-    extraGroups = [
-      "wheel"
-      "networkmanager"
-    ];
-
-    shell = pkgs.zsh;
-  };
-
-  programs.zsh.enable = true;
-
-  security.sudo = {
-    enable = true;
-    wheelNeedsPassword = true;
-  };
+    map (username: mkUserConf username;) host.users;
+    
+  }
 }
+

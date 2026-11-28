@@ -13,18 +13,7 @@
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
-  fileSystems."/" =
-    { device = "/dev/disk/by-uuid/a2015f85-6650-4d7c-b5ec-c68afe6682a7";
-      fsType = "btrfs";
-    };
-
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/FAE0-F9E6";
-      fsType = "vfat";
-      options = [ "fmask=0022" "dmask=0022" ];
-    };
-
-  swapDevices = [ ];
+  disko.devices.disk.main.device = "/dev/disk/by-path/virtio-pci-0000:05:00.0"
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 }

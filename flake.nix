@@ -19,7 +19,6 @@
 
     nixvim = {
       url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
@@ -33,42 +32,42 @@
   }: 
 
   let
+    hosts = import ./hosts/host-config.nix;
+    
+    mkHost = name:
+      let
+        host = hosts.${name};
 
-    hosts = [
-      "caerula"
-      "oblivio"
-    ];
+      in
+      nixpkgs.lib.nixosSystem {
+        system = host.system;
+        specialArgs = { inherit inputs host; };
+        
+        modules = [
+          ./hosts/${host.name}/configuration.nix
 
-    system = "x86_64-linux";
+          disko.nixosModules.disko
+          home-manager.nixosModules.home-manager
+        ];
+      };
 
-    mkHost = hostname: nixpkgs.lib.nixosSystem {
-      inherit system;
+    mkHMHost = name: 
+      let
+        host = hosts.${name};
 
-      specialArgs = { inherit inputs hostname; };
+      in
+      home-manager.lib.homeManagerConfiguration {
+        extraSpecialArgs = { inherit inputs host; };
+        modules = [
+          ./home/${host.name}.nix
+        ];
+      };
 
-      modules = [
-        disko.nixosModules.disko
-        home-manager.nixosModules.default
-
-        ./hosts/${hostname}/configuration.nix
-
-
-        { networking.hostName = hostname; }
-
-        {
-          home-manager = {
-            useGlobalPkgs = true;
-            useUserPackages = true;
-            extraSpecialArgs = { inherit inputs hostname; };
-            
-            users.${hostname} = import ./home/${hostname}.nix;
-          };
-        }
-      ];
-    };
-  
-  in 
+  in
   {
-    nixosConfigurations = nixpkgs.lib.genAttrs hosts mkHost;
+    nixosConfigurations = {
+      oblivio = mkHost "oblivio";
+      caerula = mkHost "caerula";
+    };
   };
 }

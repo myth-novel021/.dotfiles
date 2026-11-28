@@ -6,5 +6,6 @@
     ./nixvim.nix
     ./noctalia.nix
     ./shell.nix
+    ./xdg.nix
   ];
 }

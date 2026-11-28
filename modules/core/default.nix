@@ -9,5 +9,6 @@
     ./nix.nix
     ./security.nix
     ./users.nix
+    ./zram.nix
   ];
 }

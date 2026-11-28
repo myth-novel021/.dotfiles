@@ -3,6 +3,7 @@
 {
   security = {
     sudo.enable = true;
+    sudo.wheelNeedsPassword = true;
 
     polkit.enable = true;
 

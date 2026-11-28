@@ -1,8 +1,0 @@
-{ ... }:
-
-{
-  imports = [
-    ./components
-    ./base.nix
-  ];
-}

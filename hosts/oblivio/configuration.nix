@@ -1,13 +1,11 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, host, ... }:
 
 {
   imports =
     [ 
-      ../vm.nix
+      ../${host.device}.nix
       ./hardware-configuration.nix
-      ../../modules/core
-      ../../modules/desktop
     ];
 
-  system.stateVersion = "26.05";
+  disko.devices.disk.main.device = host.deviceID;
 }
