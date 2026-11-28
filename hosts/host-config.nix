@@ -2,7 +2,7 @@
   caerula = rec {
     name = "caerula";
     type = "os";
-    user = [
+    users = [
       "rei"
     ];
     system = "x86_64-linux";
@@ -12,7 +12,7 @@
   oblivio = rec {
     name = "oblivio";
     type = "os";
-    user = [
+    users = [
       "rei"
     ];
     system = "x86_64-linux";

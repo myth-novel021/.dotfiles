@@ -1,40 +1,39 @@
 { lib, host, inputs, ... }:
 
-{
-  let
-    hosts = import ../../hosts/host-config.nix;
+let
+  hosts = import ../../hosts/host-config.nix;
 
-    mkUserConf = username:
-      let
-        user = hosts.${username};
-      in
-        
-        users.users.${user.name} = {
-          inherit (user) isNormalUser extraGroups;
-        };
-        
-        home-manager = {
+  mkUserConf = username:
+    let
+      user = hosts.${username};
 
-          extraSpecialArgs = { inherit inputs host user; };
-          imports = [
-            ../../home/home.nix
-          ];
-        };
-          
-  in {
-    users.mutableUsers = true;
-    security.sudo = {
-      enable = true;
-      wheelNeedsPassword = true;
+    in {
+      users.users.${user.name} = {
+        inherit (user) isNormalUser extraGroups;
+      };
+      
+      home-manager = {
+
+        extraSpecialArgs = { inherit inputs host user; };
+        imports = [
+          ../../home/home.nix
+        ];
+      };
     };
-    
-    home-manager = {
-      useGlobalPkgs = true;
-      useUserPackages = true;
-    };
+        
+in {
+  users.mutableUsers = true;
+  security.sudo = {
+    enable = true;
+    wheelNeedsPassword = true;
+  };
+  
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+  };
 
-    map (username: mkUserConf username;) host.users;
-    
-  }
+  imports = map (username: mkUserConf username) host.users;
+  
 }
 

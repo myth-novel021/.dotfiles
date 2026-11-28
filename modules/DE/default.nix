@@ -3,7 +3,6 @@
 {
   imports = [
     ./audio.nix
-    ./power.nix
-    ./de.nix
+    ./DE.nix
   ];
 }

@@ -3,7 +3,7 @@
 {
   imports = [
     ../modules/core
-    ../modules/desktop
+    ../modules/DE
     ../modules/laptop
   ];
 
