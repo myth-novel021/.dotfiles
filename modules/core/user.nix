@@ -1,5 +1,6 @@
 { lib, host, inputs, ... }:
 
+
 let
   hosts = import ../../hosts/host-config.nix;
 
@@ -12,16 +13,15 @@ let
         inherit (user) isNormalUser extraGroups;
       };
       
-      home-manager = {
-
-        extraSpecialArgs = { inherit inputs host user; };
-        imports = [
-          ../../home/home.nix
-        ];
-      };
+      home-manager.extraSpecialArgs = { inherit inputs host user; };
     };
         
 in {
+  imports = [
+    map (username: mkUserConf username) host.users
+    ../../home/home.nix
+  ];
+
   users.mutableUsers = true;
   security.sudo = {
     enable = true;
@@ -32,8 +32,5 @@ in {
     useGlobalPkgs = true;
     useUserPackages = true;
   };
-
-  imports = map (username: mkUserConf username) host.users;
-  
 }
 

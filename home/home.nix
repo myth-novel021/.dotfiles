@@ -1,7 +1,7 @@
 { inputs, pkgs, user, host ? user, ... }:
 
 {
-  imports = map( package: ./components/${package}.nix;) user.package;
+  imports = map( package: ./components/${package}.nix ) user.package;
 
   home.username = user.name;
   home.homeDirectory = "/home/${user.name}";
