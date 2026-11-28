@@ -2,9 +2,9 @@
 
 {
   imports = [
-    ./modules/core
-    ./modules/desktop
-    ./modules/laptop
+    ../modules/core
+    ../modules/desktop
+    ../modules/laptop
   ];
 
   services.qemuGuest.enable = true;

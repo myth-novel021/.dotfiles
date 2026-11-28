@@ -13,7 +13,5 @@
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
-  disko.devices.disk.main.device = "/dev/disk/by-path/virtio-pci-0000:05:00.0"
-
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 }

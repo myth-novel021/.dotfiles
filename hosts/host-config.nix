@@ -1,5 +1,3 @@
-{ ... }:
-
 {
   caerula = rec {
     name = "caerula";
