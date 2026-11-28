@@ -13,14 +13,17 @@ let
         inherit (user) isNormalUser extraGroups;
       };
       
-      home-manager.extraSpecialArgs = { inherit inputs host user; };
+      home-manager = {
+        extraSpecialArgs = { inherit inputs host; };
+        users.${user.name} = {
+          _module.args = { inherit user; };
+        imports = [ ../../home/home.nix ];
+      };
     };
+  };
         
 in {
-  imports = [
-    map (username: mkUserConf username) host.users
-    ../../home/home.nix
-  ];
+  imports = (map (username: mkUserConf username) host.users);
 
   users.mutableUsers = true;
   security.sudo = {
