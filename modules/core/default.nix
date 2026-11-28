@@ -8,7 +8,7 @@
     ./network.nix
     ./nix.nix
     ./security.nix
-    ./users.nix
+    ./user.nix
     ./zram.nix
   ];
 }

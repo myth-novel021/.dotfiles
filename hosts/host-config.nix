@@ -42,4 +42,5 @@
     package = [
       "default"
     ];
+  };
 }
